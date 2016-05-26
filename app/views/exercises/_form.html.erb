@@ -1,0 +1,44 @@
+<%= form_for @exercise do |e| %>
+
+  <% if @exercise.errors.any? %>
+    <h3><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved</h3>
+
+    <ul>
+      <% @exercise.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= collection_select(:exercise, :bodyarea_id, Bodyarea.all, :id, :name, include_blank: true) %>
+  </p>
+
+  <p>
+    <%= collection_select(:exercise, :typesofexercise_id, Typesofexercise.all, :id, :name, include_blank: true) %>
+  </p>
+
+  <p>
+    <%= e.label :sets %>
+    <%= e.text_field :n_of_sets %>
+  </p>
+
+  <p>
+    <%= e.label :repetitions %>
+    <%= e.text_field :n_of_repetitions %>
+  </p>
+
+  <p>
+    <%= e.label :duration_of_repetitions %>
+    <%= e.text_field :duration_of_repetition %>
+  </p>
+
+    <p>
+    <%= e.label :instructions %>
+    <%= e.text_area :instructions %>
+  </p>
+
+  <p>
+    <%= e.submit %>
+  </p>
+<% end %>

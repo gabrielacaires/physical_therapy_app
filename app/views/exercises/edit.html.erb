@@ -1,0 +1,5 @@
+<%= link_to 'Back to Exercises set list', exercises_path %>
+
+<h1>Update <%= Typesofexercise.find_by_id(@exercise.typesofexercise_id).name %></h1>
+
+<%= render 'form' %>

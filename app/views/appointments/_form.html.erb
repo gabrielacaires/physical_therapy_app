@@ -1,0 +1,25 @@
+<%= form_for @appointment do |a| %>
+  <p>
+    <%= a.label :app_date %>
+    <%= a.datetime_field :app_date %>
+  </p>
+
+  <p>
+    <%= a.label :duration %>
+    <%= a.text_field :duration %>
+  </p>
+
+  <p>
+    <%= a.label :comments %>
+    <%= a.text_field :comments %>
+  </p>
+
+  <p>
+    <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.all, :id, :exercise_name) %>
+  </p>
+
+  <p>
+    <%= a.label :submit %>
+    <%= a.submit %>
+  </p>
+<% end %>

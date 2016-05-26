@@ -1,0 +1,24 @@
+<p><%= link_to 'Back to Exercises list', exercises_path %></p>
+
+<h1><% @exercise.typesofexercise %></h1>
+
+<p>
+  Sets: <br>
+  <%= @exercise.n_of_sets %>  
+</p>
+
+<p>
+  Repetitions: <br>
+  <%= @exercise.n_of_repetitions %>  
+</p>
+
+<p>
+  Duration of repetitions:
+  <%= @exercise.duration_of_repetition %>
+</p>
+
+<p>
+  Instructions:
+  <%= @exercise.instructions %>
+</p>
+

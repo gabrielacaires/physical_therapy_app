@@ -1,0 +1,16 @@
+<%= link_to "Back to Appointments List", appointments_path %>
+
+<h1>Appointment</h1>
+
+<%= @appointment.app_date %>
+
+<% @appointment.exercises.each do |exercise| %>
+  <% e = exercise.typesofexercise_id %>
+  <% typeofexercise = Typesofexercise.find_by_id(e) %>
+  <p><%= link_to typeofexercise.name, exercise_path(exercise) %></p>
+  <p>Sets: <%= exercise.n_of_sets %></p>
+  <p>Repetitions<%= exercise.n_of_repetitions %></p>
+  <p>
+    <%= link_to 'edit', appointment_path(@appointment) %>
+  </p>
+<% end %>
