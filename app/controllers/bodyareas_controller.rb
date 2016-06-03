@@ -1,6 +1,7 @@
 class BodyareasController < ApplicationController
   before_action :find_bodyarea, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   def index
     @bodyareas = Bodyarea.all
   end

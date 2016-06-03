@@ -1,5 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :find_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @exercises = Exercise.all
@@ -14,7 +15,7 @@ class ExercisesController < ApplicationController
 
   def create
     @exercise = Exercise.new(exercise_params)
-    binding.pry
+    
     if @exercise.save
       flash[:notice] = "The exercise was saved successfully!"
     

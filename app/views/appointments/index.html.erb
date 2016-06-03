@@ -2,31 +2,41 @@
 
 <%= link_to 'Create a new appointment', new_appointment_path %>
 
-<table>
-  <thead>
-    <th>Date</th>
-    <th>Exercises</th>
-    <th># Set</th>
-    <th># Repetitions</th>
-    <th></th>
-  </thead>
-  <tbody>
-    
-     <% @appointments.each do |a| %>
-      <tr>
-        <td><%= link_to 'Appointment', appointment_path(a) %></td>
-        <% a.exercises.each do |exercise| %>
-          <% e = exercise.typesofexercise_id %>
-          <% typeofexercise = Typesofexercise.find_by_id(e) %>
-          <td><%= link_to typeofexercise.name, exercise_path(exercise) %></td>
-          <td><%= exercise.n_of_sets %></td>
-          <td><%= exercise.n_of_repetitions %></td>
-          <td>
-            <%= link_to 'edit', appointment_path(a) %>
-          </td>
-        <% end %>
-      </tr>
+<div class="row">
+  <div class="col-md-12">
 
+    <%= month_calendar attribute: :app_date, events: @appointments do |date, apps| %>
+      <p><%= date %></p>
+
+      <% apps.each do |app| %>
+        <%= link_to app.name, appointment_path(app) %>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-1">
+
+    <table class="table table-bordered">
+      <caption>Appointments list view</caption>
+      <thead>
+        <th>Date</th>
+        <th></th>
+      </thead>
+      <tbody>
+        
+        <% @appointments.each do |a| %>
+          <tr>
+            <td><%= link_to a.app_date.to_date, appointment_path(a) %></td>
+            <td>  
+              <%= link_to 'edit', edit_appointment_path(a) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

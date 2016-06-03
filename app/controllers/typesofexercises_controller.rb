@@ -1,5 +1,6 @@
 class TypesofexercisesController < ApplicationController
   before_action :find_typesofexercise, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @typesofexercises = Typesofexercise.all
@@ -44,7 +45,7 @@ class TypesofexercisesController < ApplicationController
   end
 
   def typesofexercise_params
-    params.require(:typesofexercise).permit(:name, :bodyarea_id)
+    params.require(:typesofexercise).permit(:name, :bodyarea_id, :photo)
   end 
 
   def find_typesofexercise

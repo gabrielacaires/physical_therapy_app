@@ -27,6 +27,14 @@ gem 'devise'
 
 gem 'pry', '~> 0.10.3'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'bootstrap_form'
+
+gem "paperclip", "~> 4.2"
+
+gem "simple_calendar", "~> 2.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

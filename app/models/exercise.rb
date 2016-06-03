@@ -2,6 +2,11 @@ class Exercise < ActiveRecord::Base
   has_many :appointments_exercises
   has_many :appointments, through: :appointments_exercises
 
+  scope :back, -> { where( bodyarea_id: 1 ) }
+  scope :knee, -> { where( bodyarea_id: 4 ) }
+  scope :wrist, -> { where( bodyarea_id: 5 ) }
+  scope :neck, -> { where( bodyarea_id: 6) }
+
   belongs_to :bodyarea
 
   belongs_to :typesofexercise

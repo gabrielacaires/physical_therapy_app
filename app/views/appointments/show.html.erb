@@ -2,15 +2,20 @@
 
 <h1>Appointment</h1>
 
-<%= @appointment.app_date %>
+<p>Date: <%= @appointment.app_date.to_date %></p>
+<p>Comments: <%= @appointment.comments %></p>
+<p>Duration: <%= @appointment.duration %></p>
 
-<% @appointment.exercises.each do |exercise| %>
-  <% e = exercise.typesofexercise_id %>
-  <% typeofexercise = Typesofexercise.find_by_id(e) %>
-  <p><%= link_to typeofexercise.name, exercise_path(exercise) %></p>
-  <p>Sets: <%= exercise.n_of_sets %></p>
-  <p>Repetitions<%= exercise.n_of_repetitions %></p>
-  <p>
-    <%= link_to 'edit', appointment_path(@appointment) %>
-  </p>
+<% if @appointment.exercises.any? %>
+  <% @appointment.exercises.each do |exercise| %>
+    <% typeofexercise = Typesofexercise.find_by_id(exercise.typesofexercise_id) %>
+    <%= image_tag typeofexercise.photo.url(:thumb) %>
+    <p><%= link_to typeofexercise.name, exercise_path(exercise) %></p>
+    <p>Sets: <%= exercise.n_of_sets %></p>
+    <p>Repetitions<%= exercise.n_of_repetitions %></p>
+    <p><%= link_to 'edit', edit_appointment_path(@appointment) %></p>
+  <% end %>
+<% else %>
+  <%= flash.now[:error] = "There were no exercises in this appointment" %>
+  <p><%= link_to 'edit', edit_appointment_path(@appointment) %></p>
 <% end %>

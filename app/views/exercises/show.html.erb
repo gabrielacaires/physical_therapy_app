@@ -1,6 +1,8 @@
 <p><%= link_to 'Back to Exercises list', exercises_path %></p>
 
-<h1><% @exercise.typesofexercise %></h1>
+<h1><%= @exercise.typesofexercise.name %></h1>
+
+<%= image_tag Typesofexercise.find_by_id(@exercise.typesofexercise_id).photo.url(:medium) %>
 
 <p>
   Sets: <br>

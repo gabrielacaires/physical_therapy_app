@@ -1,20 +1,22 @@
-<%= form_for @bodyarea do |b| %>
-  
-  <% if @bodyarea.errors.any? %>
-    <h3><%= pluralize(@bodyarea.errors.count, "error") %> prohibited this bodyarea from being saved</h3>
-    <ul>
-      <% @bodyarea.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+<div class="col-md-4">
+  <%= form_for @bodyarea do |b| %>
+    
+    <% if @bodyarea.errors.any? %>
+      <h3><%= pluralize(@bodyarea.errors.count, "error") %> prohibited this bodyarea from being saved</h3>
+      <ul>
+        <% @bodyarea.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="form-group">
+      <%= b.label :name %>
+      <%= b.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= b.submit %>
+    </div>
   <% end %>
-
-  <p>
-    <%= b.label :name %>
-    <%= b.text_field :name %>
-  </p>
-
-  <p>
-    <%= b.submit %>
-  </p>
-<% end %>
+</div>

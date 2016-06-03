@@ -1,25 +1,38 @@
 <%= form_for @appointment do |a| %>
-  <p>
-    <%= a.label :app_date %>
-    <%= a.datetime_field :app_date %>
-  </p>
+  <div class="form-group">
+    <%= a.datetime_select :app_date %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= a.label :duration %>
     <%= a.text_field :duration %>
-  </p>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= a.label :comments %>
-    <%= a.text_field :comments %>
-  </p>
+    <%= a.text_area :comments %>
+  </div>
 
-  <p>
-    <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.all, :id, :exercise_name) %>
-  </p>
+  <div class="form-group">
+    <%= a.label :exercises %>
+    <p> Back Exercises</p>
+    <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.back, :id, :exercise_name) %>
+  </div>
+  <div class="form-group">
+    <p> Knee Exercises</p>
+    <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.knee, :id, :exercise_name) %>
+  </div>
+  <div class="form-group">
+    <p> Wrist Exercises</p>
+    <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.wrist, :id, :exercise_name) %>
+  </div>
+  <div class="form-group">
+    <p> Neck Exercises</p>
+    <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.neck, :id, :exercise_name) %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= a.label :submit %>
     <%= a.submit %>
-  </p>
+  </div>
 <% end %>

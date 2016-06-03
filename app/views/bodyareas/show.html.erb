@@ -1,3 +1,10 @@
 <h1><%= @bodyarea.name %></h1>
 
+<p><%= @bodyarea.name %> exercises</p>
+
+<ul>
+  <% @bodyarea.typesofexercises.each do |exercise| %>
+    <li><%= exercise.name %></li>
+  <% end %>
+<ul>
 <%= link_to 'edit', edit_bodyarea_path(@bodyarea) %>
