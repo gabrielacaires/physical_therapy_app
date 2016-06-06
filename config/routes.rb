@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :bodyareas
   resources :typesofexercises
 
-  root 'typesofexercises#index'
+  root 'static_pages#home'
 end

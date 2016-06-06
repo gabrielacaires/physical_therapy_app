@@ -1,2 +1,14 @@
 @import "bootstrap-sprockets"; 
 @import "bootstrap";
+
+input[type="checkbox"] {
+  display: inline-block;
+}
+
+label {
+  font-weight: normal;
+}
+
+.checkbox_container {
+  display: block;
+}

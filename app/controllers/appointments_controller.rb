@@ -4,6 +4,12 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.all
+    @bodyareas = Bodyarea.all
+
+    respond_to do |format|
+      format.html
+      format.js
+    end  
   end  
 
   def show

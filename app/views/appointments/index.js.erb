@@ -1,0 +1,11 @@
+$('#select_bodyareas input').on('change', function () {
+  var selected = [];
+  $('input:checked').each(function() {
+      selected.push($(this).attr('value'));
+  });
+
+  for (i = 0; i < selected.length; i++) { 
+    
+    $('#bodyarea_'+ selected[i]).hide();
+  }
+});
