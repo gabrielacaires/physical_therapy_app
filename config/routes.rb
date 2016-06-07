@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :bodyareas
   resources :typesofexercises
 
+  # root "exercises#index"
 end

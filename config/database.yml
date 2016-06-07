@@ -8,6 +8,7 @@ default: &default
   adapter: sqlite3
   pool: 5
   timeout: 5000
+  port: 5432
 
 development:
   <<: *default
@@ -26,4 +27,4 @@ production:
   pool: 25
   database: hero_app_production
   username: admin
-  password: 
+  password:
