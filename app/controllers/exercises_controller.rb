@@ -11,6 +11,7 @@ class ExercisesController < ApplicationController
   
   def new
     @exercise = Exercise.new
+    @bodyareas = Bodyarea.all  
   end
 
   def create

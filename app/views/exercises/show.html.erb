@@ -4,23 +4,16 @@
 
 <%= image_tag Typesofexercise.find_by_id(@exercise.typesofexercise_id).photo.url(:medium) %>
 
-<p>
-  Sets: <br>
-  <%= @exercise.n_of_sets %>  
-</p>
+<h5>Sets:</h5>
+<p><%= @exercise.n_of_sets %></p>  
 
-<p>
-  Repetitions: <br>
-  <%= @exercise.n_of_repetitions %>  
-</p>
+<h5>Repetitions:</h5>
+<p><%= @exercise.n_of_repetitions %></p>  
 
-<p>
-  Duration of repetitions:
-  <%= @exercise.duration_of_repetition %>
-</p>
+<h5>Duration of repetitions:</h5>
+<p><%= @exercise.duration_of_repetition %></p>
 
-<p>
-  Instructions:
-  <%= @exercise.instructions %>
-</p>
+<h5>Instructions:</h5>
+<p><%= Typesofexercise.find_by_id(@exercise.typesofexercise_id).instructions %></p>
+
 

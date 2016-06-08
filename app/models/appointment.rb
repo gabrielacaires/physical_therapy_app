@@ -1,6 +1,8 @@
 class Appointment < ActiveRecord::Base
   has_many :appointments_exercises
   has_many :exercises, through: :appointments_exercises
+  has_many :users_appointments
+  has_many :users, through: :users_appointments
 
   validates :app_date, presence: true
 

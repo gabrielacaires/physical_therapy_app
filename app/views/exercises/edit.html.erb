@@ -1,4 +1,4 @@
-<%= link_to 'Back to Exercises set list', exercises_path %>
+<%= link_to 'Back to Exercises set list', exercises_path, { class: "btn btn-default" } %>
 
 <h1>Update <%= Typesofexercise.find_by_id(@exercise.typesofexercise_id).name %></h1>
 

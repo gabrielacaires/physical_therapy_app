@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @appointments = Appointment.all
+    @appointments = User.find_by_id(current_user).appointments
     @bodyareas = Bodyarea.all
 
     respond_to do |format|
@@ -34,6 +34,7 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
+    @bodyareas = Bodyarea.all
   end
 
   def update
@@ -51,6 +52,6 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:app_date, :duration, :comments, :exercise_ids => [])
-  end  
+    params.require(:appointment).permit(:app_date, :duration, :comments, :exercise_ids => [], :user_ids => []).merge(user_ids: current_user.id)
+  end
 end  

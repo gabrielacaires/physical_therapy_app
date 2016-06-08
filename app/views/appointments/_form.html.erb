@@ -1,4 +1,5 @@
-<%= form_for(@appointment, remote: true) do |a| %>
+<%= form_for(@appointment, { remote: true } ) do |a| %>
+
   <div class="form-group">
     <%= a.datetime_select :app_date %>
   </div>
@@ -14,36 +15,53 @@
   </div>
 
   <div id="select_bodyareas">
-    <p>Select the body areas that will be included in this appointment </p>
+    <h4>Select the body areas that will be included in this appointment </h4>
     <% @bodyareas.each do |bodyarea| %>
       <input type="checkbox" class="checkbox-inline" value="<%= bodyarea.id %>" id="<%= bodyarea.id %>"></input>
       <label for="<%= bodyarea.id %>"><%= bodyarea.name %></label>
     <% end %>
   </div>
 
-  <div class="form-group" id="bodyarea_<%= @bodyareas.find_by_name("Back").id %>">
-    <%= a.label :exercises %>
-    <p> Back Exercises</p>
+  <div class="form-group bodyarea" id="bodyarea_<%= @bodyareas.find_by_name("Back").id %>">
+    <h4> Back Exercises</h4>
     <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.back, :id, :exercise_name, { item_wrapper_class: 'checkbox_container'}) %>
   </div>
 
-  <div class="form-group" id="bodyarea_<%= @bodyareas.find_by_name("Knee").id %>">
+  <div class="form-group bodyarea" id="bodyarea_<%= @bodyareas.find_by_name("Knee").id %>">
     <p> Knee Exercises</p>
     <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.knee, :id, :exercise_name) %>
   </div>
 
-  <div class="form-group" id="bodyarea_<%= @bodyareas.find_by_name("Wrist").id %>">
+  <div class="form-group bodyarea" id="bodyarea_<%= @bodyareas.find_by_name("Wrist").id %>">
     <p> Wrist Exercises</p>
     <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.wrist, :id, :exercise_name) %>
   </div>
 
-  <div class="form-group" id="bodyarea_<%= @bodyareas.find_by_name("Neck").id %>">
+  <div class="form-group bodyarea" id="bodyarea_<%= @bodyareas.find_by_name("Neck").id %>">
     <p> Neck Exercises</p>
     <%= collection_check_boxes(:appointment, :exercise_ids, Exercise.neck, :id, :exercise_name) %>
   </div>
 
   <div class="form-group">
-    <%= a.label :submit %>
     <%= a.submit %>
   </div>
+
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#select_bodyareas input').on('change', function () {
+      var selected = [];
+      $('input:checked').each(function() {
+          selected.push($(this).attr('value'));
+      });
+
+      $('.bodyarea').hide();
+
+      for (i = 0; i < selected.length; i++) { 
+        
+        $('#bodyarea_'+ selected[i]).fadeIn(500);
+      }
+    });
+  });
+</script>

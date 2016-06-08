@@ -12,6 +12,7 @@
     <% end %>
     
     <div class="form-group">
+      <p>Select the body area for this exercise</p>
       <%= collection_select(:typesofexercise, :bodyarea_id, Bodyarea.all, :id, :name, include_blank: true) %>
     </div>
 

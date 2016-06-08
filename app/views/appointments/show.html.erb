@@ -2,19 +2,24 @@
 
 <h1>Appointment</h1>
 
-<p>Date: <%= @appointment.app_date.to_date %></p>
-<p>Comments: <%= @appointment.comments %></p>
-<p>Duration: <%= @appointment.duration %></p>
+<h5>Date: <%= @appointment.app_date.to_date %></h5>
+<h5>Comments: <%= @appointment.comments %></h5>
+<h5>Duration: <%= @appointment.duration %></h5>
+<h3>Exercises</h3>
 
 <% if @appointment.exercises.any? %>
   <% @appointment.exercises.each do |exercise| %>
-    <% typeofexercise = Typesofexercise.find_by_id(exercise.typesofexercise_id) %>
-    <%= image_tag typeofexercise.photo.url(:thumb) %>
-    <p><%= link_to typeofexercise.name, exercise_path(exercise) %></p>
-    <p>Sets: <%= exercise.n_of_sets %></p>
-    <p>Repetitions<%= exercise.n_of_repetitions %></p>
-    <p><%= link_to 'edit', edit_appointment_path(@appointment) %></p>
+    <div class="app_exercise">
+      <% typeofexercise = Typesofexercise.find_by_id(exercise.typesofexercise_id) %>
+      <%= image_tag typeofexercise.photo.url(:thumb) %>
+      <h4><%= link_to typeofexercise.name, exercise_path(exercise) %></h4>
+      <div class="exercise_text">Sets: <%= exercise.n_of_sets %></div>
+      <div class="exercise_text">Repetitions: <%= exercise.n_of_repetitions %></div>
+      <div class="exercise_text"><%= link_to 'edit', edit_exercise_path(exercise) %></div>
+    </div>
   <% end %>
+  <div style="clear: both">
+  <p><%= link_to 'Edit Appointment', edit_appointment_path(@appointment), {class: "btn btn-link"} %></p>
 <% else %>
   <%= flash.now[:error] = "There were no exercises in this appointment" %>
   <p><%= link_to 'edit', edit_appointment_path(@appointment) %></p>

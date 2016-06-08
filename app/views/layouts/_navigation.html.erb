@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-style">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,27 +8,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Physical Therapy</a>
+      <a class="navbar-brand" href="<%= root_path %>">ManagePT</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-        <li><a href="<%= appointments_path %>">Calendar</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="<%= appointments_path %>">Appointments</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="<%= bodyareas_path %>">Body Areas</a></li>
-            <li><a href="<%= exercises_path %>">Sets of Exercises</a></li>
-            <li><a href="<%= typesofexercises_path %>">Exercises Types</a></li>
-          </ul>
-        </li>
-      </ul>
+      <% if current_user %>
+        <ul class="nav navbar-nav nav-link-style">
+          <li><a href="<%= root_path %>">Home<span class="sr-only">(current)</span></a></li>
+          <li><a href="<%= appointments_path %>">Calendar</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="<%= appointments_path %>">Appointments</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="<%= bodyareas_path %>">Body Areas</a></li>
+              <li><a href="<%= exercises_path %>">Sets of Exercises</a></li>
+              <li><a href="<%= typesofexercises_path %>">Exercises Types</a></li>
+            </ul>
+          </li>
+        </ul>
+      <% end %>
       
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right nav-link-style">
         <% if current_user %>
           <li><a href="<%= edit_user_registration_path %>"><%= current_user.email %></a></li>
         

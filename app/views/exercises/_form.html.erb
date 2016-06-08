@@ -1,5 +1,5 @@
-<div class="col-md-4">
-  <%= form_for @exercise do |e| %>
+<div class="col-md-6">
+  <%= form_for(@exercise, { remote: true }) do |e| %>
 
     <% if @exercise.errors.any? %>
       <h3><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved</h3>
@@ -12,11 +12,24 @@
     <% end %>
 
     <div class="form-group">
-      <%= collection_select(:exercise, :bodyarea_id, Bodyarea.all, :id, :name, include_blank: true) %>
+      <p>Select the body area:</p>
+      <%= collection_select(:exercise, :bodyarea_id, Bodyarea.all, :id, :name, { include_blank: true }, {  onchange: "showdivs()", id: "bodyarea_select" }) %>
     </div>
 
-    <div class="form-group">
-      <%= collection_select(:exercise, :typesofexercise_id, Typesofexercise.all, :id, :name, include_blank: true) %>
+    <div class="form-group exercise_bodyarea" id="exercise_bodyarea_<%= Bodyarea.find_by_name("Back").id %>">
+      <%= collection_select(:exercise, :typesofexercise_id, Typesofexercise.back, :id, :name, { include_blank: true }, { id: "exercise_select"}) %>
+    </div>
+
+    <div class="form-group exercise_bodyarea" id="exercise_bodyarea_<%= Bodyarea.find_by_name("Knee").id %>">
+      <%= collection_select(:exercise, :typesofexercise_id, Typesofexercise.knee, :id, :name, { include_blank: true }, { id: "exercise_select"}) %>
+    </div>
+
+    <div class="form-group exercise_bodyarea" id="exercise_bodyarea_<%= Bodyarea.find_by_name("Wrist").id %>">
+      <%= collection_select(:exercise, :typesofexercise_id, Typesofexercise.wrist, :id, :name, { include_blank: true }, { id: "exercise_select"}) %>
+    </div>
+
+    <div class="form-group exercise_bodyarea" id="exercise_bodyarea_<%= Bodyarea.find_by_name("Neck").id %>">
+      <%= collection_select(:exercise, :typesofexercise_id, Typesofexercise.neck, :id, :name, { include_blank: true }, { id: "exercise_select"}) %>
     </div>
 
     <div class="form-group">
@@ -37,5 +50,15 @@
     <div class="form-group">
       <%= e.submit %>
     </div>
+    <% binding.pry %>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  // function showdivs() {  
+
+  //   selection = $('#bodyarea_select option:selected').first().attr('value');
+
+  //   $('#exercise_bodyarea_' + selection).show();
+  // }  
+</script>
