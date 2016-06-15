@@ -1,6 +1,8 @@
 <h1>Body Areas</h1>
 
-<p><%= link_to "Create new body area", new_bodyarea_path, { class: "btn btn-info", role: "button" } %></p>
+<% if current_user.admin %>
+  <p><%= link_to "Create new body area", new_bodyarea_path, { class: "btn btn-info", role: "button" } %></p>
+<% end %>
 
 <div class="row">
   <div class="col-md-4">
@@ -13,10 +15,12 @@
         <% @bodyareas.each do |b| %>
           <tr>
             <td><%= b.name %></td>
-            <td>
-              <%= link_to 'edit', edit_bodyarea_path(b) %>
-              <%= link_to 'delete', bodyarea_path(b), method: :delete, data: {confirm: "Are you sure you want to delete this Body Area?"} %>
-            </td>  
+            <% if current_user.admin %>
+              <td>
+                <%= link_to 'edit', edit_bodyarea_path(b) %>
+                <%= link_to 'delete', bodyarea_path(b), method: :delete, data: {confirm: "Are you sure you want to delete this Body Area?"} %>
+              </td>
+            <% end %>
           </tr>  
         <% end %> 
       </tbody>

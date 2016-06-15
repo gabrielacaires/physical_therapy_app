@@ -6,6 +6,8 @@ class Appointment < ActiveRecord::Base
 
   validates :app_date, presence: true
 
+  accepts_nested_attributes_for :exercises
+
   def start_time
     self.app_date
   end

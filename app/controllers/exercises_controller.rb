@@ -51,6 +51,6 @@ class ExercisesController < ApplicationController
   end
 
   def exercise_params
-    params.require(:exercise).permit(:n_of_sets, :n_of_repetitions, :duration_of_repetition, :instructions, :bodyarea_id, :typesofexercise_id)
+    params.require(:exercise).permit(:n_of_sets, :n_of_repetitions, :duration_of_repetition, :bodyarea_id, :typesofexercise_id)
   end 
 end

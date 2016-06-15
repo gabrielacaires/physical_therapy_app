@@ -19,10 +19,13 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new
     @bodyareas = Bodyarea.all
     @exercise = Exercise.new
+    @appointment.exercises.build()
   end
 
   def create
     @appointment = Appointment.new(appointment_params)
+
+    binding.pry
 
     if @appointment.save
       flash[:notice] = "The appointment was saved successfully!"
@@ -52,6 +55,6 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:app_date, :duration, :comments, :exercise_ids => [], :user_ids => []).merge(user_ids: current_user.id)
+    params.require(:appointment).permit(:app_date, :duration, :comments, :exercises_attributes => [:n_of_sets, :n_of_repetitions, :duration_of_repetition, :bodyarea_id, :typesofexercise_id], :exercise_ids => [], :user_ids => []).merge(user_ids: current_user.id)
   end
 end  
