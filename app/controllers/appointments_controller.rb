@@ -55,6 +55,6 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:app_date, :duration, :comments, :exercises_attributes => [:n_of_sets, :n_of_repetitions, :duration_of_repetition, :bodyarea_id, :typesofexercise_id], :exercise_ids => [], :user_ids => []).merge(user_ids: current_user.id)
+    params.require(:appointment).permit(:app_date, :duration, :comments, :exercises_attributes => [:id, :n_of_sets, :n_of_repetitions, :duration_of_repetition, :bodyarea_id, :typesofexercise_id], :exercise_ids => [], :user_ids => []).merge(user_ids: current_user.id)
   end
 end  
