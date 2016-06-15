@@ -25,6 +25,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 25
-  database: hero_app_production
+  database: physical_therapy_app_production
   username: admin
   password:

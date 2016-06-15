@@ -35,6 +35,8 @@ gem "paperclip", "~> 4.2"
 
 gem "simple_calendar", "~> 2.0"
 
+gem 'yaml_db', github: 'jetthoughts/yaml_db'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
