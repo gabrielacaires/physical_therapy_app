@@ -1,3 +1,5 @@
+require "open-uri"
+
 class Typesofexercise < ActiveRecord::Base
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
@@ -10,6 +12,14 @@ class Typesofexercise < ActiveRecord::Base
 
   belongs_to :bodyarea
 
-  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :photo, 
+                    styles: { medium: "300x300>", thumb: "100x100>" }, 
+                    default_url: "/images/:style/missing.png",
+                    :storage => :s3, :bucket => "your_real_bucket_name_here_in_quotes"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+
+  def photo_from_url=(url)
+    self.photo = URI.parse(url) unless url.blank?
+    super
+  end
 end

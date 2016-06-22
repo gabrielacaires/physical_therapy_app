@@ -37,6 +37,10 @@ gem "simple_calendar", "~> 2.0"
 
 gem 'yaml_db', github: 'jetthoughts/yaml_db'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
+gem 'aws-sdk', '< 2.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

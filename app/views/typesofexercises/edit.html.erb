@@ -1,6 +1,7 @@
-<%= link_to 'Back to Exercises List', typesofexercises_path, { class: "btn btn-default" } %>
 
-<%= link_to 'Create new exercise', new_typesofexercise_path, { class: "btn btn-default" } %>
+<p><%= link_to 'Back to Exercises List', typesofexercises_path, { class: "btn btn-default" } %></p>
+
+<p><%= link_to 'Create new exercise', new_typesofexercise_path, { class: "btn btn-default" } %></p>
 
 <% if current_user.admin %> 
   <%= render 'form' %>

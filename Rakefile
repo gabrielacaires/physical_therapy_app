@@ -4,3 +4,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+
+Aws.use_bundled_cert!

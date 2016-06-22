@@ -9,7 +9,9 @@
     <table class="table table-bordered">
       <thead>
         <th>Name</th>
-        <th></th>
+        <% if current_user.admin %>
+          <th></th>
+        <% end %>
       </thead>  
       <tbody>
         <% @bodyareas.each do |b| %>

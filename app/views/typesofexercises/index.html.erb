@@ -9,10 +9,12 @@
         <th></th>
         <th>Name</th>
         <th>Body Area</th>
-        <th></th>
+        <% if current_user.admin %>
+          <th></th>
+        <% end %>
       </thead>
       <tbody>
-        <% @typesofexercises.each do |exercise| %>
+        <% @typesofexercises.order('bodyarea_id').each do |exercise| %>
           <tr>
             <td><%= image_tag exercise.photo.url(:thumb) %></td>
             <td><%= exercise.name %></td>

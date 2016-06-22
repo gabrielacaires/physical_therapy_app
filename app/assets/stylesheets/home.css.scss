@@ -1,6 +1,26 @@
-.hero-image {
+.main-title{
+  font-family: "Elephant", "Segoe UI Light", serif;
+  font-size: 32px;
+}
+
+.first-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url(fisioterapista_dark.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
-  height: auto;
+  height: 600px;
+}
+
+.intro-text {
+  width: 60%; 
+  margin: auto;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-family: "Segoe UI Light", serif;
+  font-size: 18px;
 }
 
 .container-style {
@@ -27,3 +47,5 @@
 .calendar-image {
   width: 90%;
 }
+
+

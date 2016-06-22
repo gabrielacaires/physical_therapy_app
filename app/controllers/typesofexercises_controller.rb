@@ -45,7 +45,7 @@ class TypesofexercisesController < ApplicationController
   end
 
   def typesofexercise_params
-    params.require(:typesofexercise).permit(:name, :bodyarea_id, :photo)
+    params.require(:typesofexercise).permit(:name, :bodyarea_id, :photo, :photo_from_url)
   end 
 
   def find_typesofexercise
