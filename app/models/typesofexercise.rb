@@ -1,7 +1,6 @@
 require "open-uri"
 
 class Typesofexercise < ActiveRecord::Base
-  attr_accessible :photo_from_url
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
   scope :back, -> { where( bodyarea_id: 1 ) }
