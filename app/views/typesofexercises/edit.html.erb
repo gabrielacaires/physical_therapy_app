@@ -3,6 +3,6 @@
 
 <p><%= link_to 'Create new exercise', new_typesofexercise_path, { class: "btn btn-default" } %></p>
 
-<% if current_user.admin %> 
+<% if current_user.is_admin? %> 
   <%= render 'form' %>
 <% end %>

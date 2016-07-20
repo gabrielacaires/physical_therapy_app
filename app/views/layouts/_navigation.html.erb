@@ -17,7 +17,7 @@
         <ul class="nav navbar-nav nav-link-style">
           <li><a href="<%= root_path %>">Home<span class="sr-only">(current)</span></a></li>
           <li><a href="<%= appointments_path %>">Calendar</a></li>
-          <% if current_user && (!current_user.patient || current_user.admin) %> 
+          <% if current_user && (current_user.is_doctor? || current_user.is_admin?) %> 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
               <ul class="dropdown-menu">

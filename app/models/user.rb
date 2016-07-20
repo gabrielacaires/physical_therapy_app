@@ -5,5 +5,30 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :users_appointments
-  has_many :appointments, through: :users_appointments 
+  has_many :appointments, through: :users_appointments
+
+  scope :patient, -> { where( patient: true ) }
+  scope :doctor, -> { where( patient: false, admin: false ) }
+
+  def types
+    name = ["Patient","Doctor"]
+  end
+
+  def is_patient?
+    if self.type == "Patient"
+      return true
+    end    
+  end
+
+  def is_doctor?
+    if self.type == "Doctor"
+      return true
+    end    
+  end  
+
+  def is_admin?
+    if self.type == "Admin"
+      return true
+    end    
+  end
 end

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :exercises
   resources :bodyareas
   resources :typesofexercises
+  resources :reminders, only: [:new, :create, :destroy]
 
   root "static_pages#home"
+
+
 end
